@@ -26,6 +26,14 @@
             android:contentDescription="@string/content_description"
             android:scaleType="centerCrop"
             android:src="@drawable/bathroom" />
+
+        <ImageView
+            android:id="@+id/gradient"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/content_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gradient_drawable" />
     </androidx.cardview.widget.CardView>
 
     <TextView
