@@ -3,12 +3,10 @@
 package tn.thinkit.challenge.ui.fragments
 
 import android.annotation.SuppressLint
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,7 +19,7 @@ import tn.thinkit.challenge.utilities.Constants
 import tn.thinkit.challenge.utilities.InjectorUtils
 import tn.thinkit.challenge.utilities.SharedPreferencesObject
 import tn.thinkit.challenge.utilities.toSimpleString
-import java.time.LocalDateTime
+import java.util.*
 
 class HomeFragment : Fragment(), RoomAdapter.RoomListener {
 
@@ -34,7 +32,6 @@ class HomeFragment : Fragment(), RoomAdapter.RoomListener {
         return inflater.inflate(R.layout.home_fragment, container, false)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart() {
         super.onStart()
         getRoomsList()
@@ -70,9 +67,8 @@ class HomeFragment : Fragment(), RoomAdapter.RoomListener {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun displayTheTime() {
-        val now = LocalDateTime.now()
+        val now = Date()
         date.text = toSimpleString(now)
     }
 

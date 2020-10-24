@@ -1,14 +1,11 @@
 package tn.thinkit.challenge.utilities
 
 import android.annotation.SuppressLint
-import android.os.Build
-import androidx.annotation.RequiresApi
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import java.text.SimpleDateFormat
+import java.util.*
 
-@RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("SimpleDateFormat")
-fun toSimpleString(date: LocalDateTime?) = with(date ?: LocalDateTime.now()) {
-    val formatter = DateTimeFormatter.ofPattern("MMMM dd, YYYY")
-    this.format(formatter)
+fun toSimpleString(date: Date?) = with(date ?: Date()) {
+    val dateFormat = SimpleDateFormat("MMMM dd, YYYY")
+    dateFormat.format(this)
 }
