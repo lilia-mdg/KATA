@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bright">
+    android:background="@color/bright"
+    app:layoutDescription="@xml/home_fragment_scene">
 
     <TextView
         android:id="@+id/date"
@@ -12,9 +13,9 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:text="July 9, 2020"
+        android:textAllCaps="true"
         android:textColor="@color/gray"
         android:textSize="18sp"
-        android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,11 +31,18 @@
         android:textColor="@color/dark"
         android:textSize="30dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/listRooms"
+        app:layout_constraintBottom_toTopOf="@id/guidelineAnimation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/date" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineAnimation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="150dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listRooms"
@@ -43,5 +51,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcomeName" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@id/guidelineAnimation" />
+</androidx.constraintlayout.motion.widget.MotionLayout>
