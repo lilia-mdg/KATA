@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/imageRoom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/content_description"
@@ -62,6 +63,7 @@
         app:layout_constraintStart_toEndOf="@id/guidelineStart" />
 
     <TextView
+        android:id="@+id/devices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="5dp"
