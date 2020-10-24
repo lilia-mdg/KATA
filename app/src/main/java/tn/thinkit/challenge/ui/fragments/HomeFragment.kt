@@ -15,10 +15,7 @@ import tn.thinkit.challenge.R
 import tn.thinkit.challenge.data.model.Room
 import tn.thinkit.challenge.ui.adapters.RoomAdapter
 import tn.thinkit.challenge.ui.viewmodels.HomeViewModel
-import tn.thinkit.challenge.utilities.Constants
-import tn.thinkit.challenge.utilities.InjectorUtils
-import tn.thinkit.challenge.utilities.SharedPreferencesObject
-import tn.thinkit.challenge.utilities.toSimpleString
+import tn.thinkit.challenge.utilities.*
 import java.util.*
 
 class HomeFragment : Fragment(), RoomAdapter.RoomListener {
@@ -74,6 +71,16 @@ class HomeFragment : Fragment(), RoomAdapter.RoomListener {
 
 
     override fun onRoomClicked(room: Room, view: View) {
-        TODO("Not yet implemented")
+        AlertDialog.openDialog(
+            activity = requireActivity(),
+            title = getString(R.string.app_name),
+            message = "The ${room.name} has ${room.nbDevices} ${if (room.nbDevices > 1) "devices" else "device"} connected",
+            positiveTextBtn = "OK",
+            negativeTextBtn = null,
+            animation = Animation.SLIDE,
+            onPositiveClicked = null,
+            onNegativeClicked = null,
+            concellable = false
+        )
     }
 }
