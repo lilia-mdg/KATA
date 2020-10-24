@@ -25,7 +25,7 @@
             android:layout_height="match_parent"
             android:contentDescription="@string/content_description"
             android:scaleType="centerCrop"
-            android:src="@drawable/bathroom" />
+            android:src="" />
 
         <ImageView
             android:id="@+id/gradient"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:elevation="5dp"
-        android:text="@string/bathroom"
+        android:text=""
         android:textColor="@color/bright"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/numberDevices"
@@ -64,7 +64,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:elevation="5dp"
-        android:text="4"
+        android:text=""
         android:textColor="@color/bright"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@id/card"
@@ -77,7 +77,7 @@
         android:elevation="5dp"
         android:paddingStart="3dp"
         android:paddingEnd="0dp"
-        android:text="Devices"
+        android:text=""
         android:textColor="@color/bright"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@id/numberDevices"
