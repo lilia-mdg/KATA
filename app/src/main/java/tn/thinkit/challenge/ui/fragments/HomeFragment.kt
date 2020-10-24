@@ -2,6 +2,7 @@
 
 package tn.thinkit.challenge.ui.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +16,13 @@ import tn.thinkit.challenge.ui.adapters.RoomAdapter
 import tn.thinkit.challenge.ui.viewmodels.HomeViewModel
 import tn.thinkit.challenge.utilities.InjectorUtils
 import androidx.lifecycle.ViewModelProviders
+import tn.thinkit.challenge.utilities.Constants
+import tn.thinkit.challenge.utilities.SharedPreferencesObject
 
 class HomeFragment : Fragment(), RoomAdapter.RoomListener{
+
+    private var nameText: String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,6 +33,17 @@ class HomeFragment : Fragment(), RoomAdapter.RoomListener{
     override fun onStart() {
         super.onStart()
         getRoomsList()
+        getName()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun getName(){
+        nameText = SharedPreferencesObject.getSharedPreferencesString(
+            requireActivity(),
+            Constants.SHARED_PREFERENCES_NAME,
+            null
+        )
+        welcomeName.text = "Welcome, $nameText!"
     }
 
     private fun getRoomsList() {

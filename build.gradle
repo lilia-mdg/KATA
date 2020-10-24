@@ -4,8 +4,9 @@ buildscript {
     ext.nav_version = "2.3.0"
     ext.material_version = "1.2.1"
     ext.navigation_version = "2.3.1"
-    ext.lifecycle_version ="2.2.0"
+    ext.lifecycle_version = "2.2.0"
     ext.glide_version = "4.11.0"
+    ext.gson_version = "2.8.6"
     repositories {
         google()
         jcenter()

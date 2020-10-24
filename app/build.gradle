@@ -48,4 +48,8 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
     implementation "com.google.android.material:material:$material_version"
+
+    //Gson
+    implementation "com.google.code.gson:gson:$gson_version"
+
 }
