@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.main_fragment.*
 import tn.thinkit.challenge.R
+import tn.thinkit.challenge.utilities.AlertDialog
+import tn.thinkit.challenge.utilities.Animation
 import tn.thinkit.challenge.utilities.Constants.SHARED_PREFERENCES_NAME
 import tn.thinkit.challenge.utilities.SharedPreferencesObject.editSharedPreferencesString
 import tn.thinkit.challenge.utilities.SharedPreferencesObject.getSharedPreferencesString
 
-class MainFragment : Fragment(){
+class MainFragment : Fragment() {
     private var nameText: String? = null
 
     override fun onCreateView(
@@ -20,7 +22,7 @@ class MainFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         getName()
-        if(nameText != null)
+        if (nameText != null)
             findNavController().navigate(R.id.toHome)
         return inflater.inflate(R.layout.main_fragment, container, false)
     }
@@ -30,14 +32,27 @@ class MainFragment : Fragment(){
         continueClick()
     }
 
-    private fun continueClick(){
+    private fun continueClick() {
         continueBtn.setOnClickListener {
             setName(nameEdittext.text.toString())
-            findNavController().navigate(R.id.toHome)
+            if (nameEdittext.text.toString().isEmpty())
+                AlertDialog.openDialog(
+                    activity = requireActivity(),
+                    title = getString(R.string.app_name),
+                    message = "Please enter your name before continuing",
+                    positiveTextBtn = "OK",
+                    negativeTextBtn = null,
+                    animation = Animation.POP,
+                    onPositiveClicked = null,
+                    onNegativeClicked = null,
+                    concellable = false
+                )
+            else
+                findNavController().navigate(R.id.toHome)
         }
     }
 
-    private fun setName(name: String){
+    private fun setName(name: String) {
         editSharedPreferencesString(
             requireActivity(),
             SHARED_PREFERENCES_NAME,
@@ -45,7 +60,7 @@ class MainFragment : Fragment(){
         )
     }
 
-    private fun getName(){
+    private fun getName() {
         nameText = getSharedPreferencesString(
             requireActivity(),
             SHARED_PREFERENCES_NAME,
