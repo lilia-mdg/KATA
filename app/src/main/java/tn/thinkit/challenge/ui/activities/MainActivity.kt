@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATED_IDENTITY_EQUALS")
+
 package tn.thinkit.challenge.ui.activities
 
 import android.os.Bundle
@@ -14,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        //super.onBackPressed()
         val onPositiveClicked = object :
             AlertDialogListener {
             override fun onClick() {
@@ -33,4 +35,5 @@ class MainActivity : AppCompatActivity() {
             concellable = true
         )
     }
+
 }

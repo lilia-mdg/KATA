@@ -1,3 +1,4 @@
+
 package tn.thinkit.challenge.ui.fragments
 
 import android.os.Bundle
@@ -14,9 +15,9 @@ import tn.thinkit.challenge.utilities.Constants.SHARED_PREFERENCES_NAME
 import tn.thinkit.challenge.utilities.SharedPreferencesObject.editSharedPreferencesString
 import tn.thinkit.challenge.utilities.SharedPreferencesObject.getSharedPreferencesString
 
+
 class MainFragment : Fragment() {
     private var nameText: String? = null
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,7 +35,6 @@ class MainFragment : Fragment() {
 
     private fun continueClick() {
         continueBtn.setOnClickListener {
-            setName(nameEdittext.text.toString())
             if (nameEdittext.text.toString().isEmpty())
                 AlertDialog.openDialog(
                     activity = requireActivity(),
@@ -47,8 +47,10 @@ class MainFragment : Fragment() {
                     onNegativeClicked = null,
                     concellable = false
                 )
-            else
+            else {
+                setName(nameEdittext.text.toString())
                 findNavController().navigate(R.id.toHome)
+            }
         }
     }
 

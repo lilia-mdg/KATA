@@ -3,12 +3,14 @@
 package tn.thinkit.challenge.ui.fragments
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.home_fragment.*
 import tn.thinkit.challenge.R
@@ -17,6 +19,7 @@ import tn.thinkit.challenge.ui.adapters.RoomAdapter
 import tn.thinkit.challenge.ui.viewmodels.HomeViewModel
 import tn.thinkit.challenge.utilities.*
 import java.util.*
+
 
 class HomeFragment : Fragment(), RoomAdapter.RoomListener {
 
@@ -34,6 +37,18 @@ class HomeFragment : Fragment(), RoomAdapter.RoomListener {
         getRoomsList()
         getName()
         displayTheTime()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val orientation = resources.configuration.orientation
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // In landscape
+            landscapeOrientation()
+        } else {
+            // In portrait
+            portraitOrientation()
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -64,6 +79,18 @@ class HomeFragment : Fragment(), RoomAdapter.RoomListener {
         }
     }
 
+    private fun portraitOrientation() {
+        val mLayoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        listRooms.layoutManager = mLayoutManager
+    }
+
+    private fun landscapeOrientation() {
+        val mLayoutManager = GridLayoutManager(requireContext(), 2)
+        listRooms.layoutManager = mLayoutManager
+    }
+
+
     private fun displayTheTime() {
         val now = Date()
         date.text = toSimpleString(now)
@@ -74,7 +101,7 @@ class HomeFragment : Fragment(), RoomAdapter.RoomListener {
         AlertDialog.openDialog(
             activity = requireActivity(),
             title = getString(R.string.app_name),
-            message = "The ${room.name} has ${room.nbDevices} ${if (room.nbDevices > 1) "devices" else "device"} connected",
+            message = "The ${room.name} has ${room.nbDevices} connected ${if (room.nbDevices > 1) "devices" else "device"}",
             positiveTextBtn = "OK",
             negativeTextBtn = null,
             animation = Animation.SLIDE,
